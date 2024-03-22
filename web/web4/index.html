@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="box">
+        <div class="display"> <input type="text" readonly size="20" id="d"></div>
+        <div class="keys">
+            <p> 
+                <input type="button" class="buttongray" value="mrc" onclick='show("Created.............")'> 
+                <input type="button" class="buttongray" value="m-" onclick='show("...........by.......")'> 
+                <input type="button" class="buttongray" value="m+" onclick='show("...............Anoop")'> 
+                <input type="button" class="buttonpink" value="/" onclick='v("/")'> 
+                <input type="button" class="buttonblack" value="7" onclick='v("7")'> 
+                <input type="button" class="buttonblack" value="8" onclick='v("8")'> 
+                <input type="button" class="buttonblack" value="9" onclick='v("9")'> 
+                <input type="button" class="buttonpink" value="*" onclick='v("*")'> 
+                <input type="button" class="buttonblack" value="4" onclick='v("4")'> 
+                <input type="button" class="buttonblack" value="5" onclick='v("5")'> 
+                <input type="button" class="buttonblack" value="6" onclick='v("6")'> 
+                <input type="button" class="buttonpink" value="-" onclick='v("-")'> 
+                <input type="button" class="buttonblack" value="1" onclick='v("1")'> 
+                <input type="button" class="buttonblack" value="2" onclick='v("2")'> 
+                <input type="button" class="buttonblack" value="3" onclick='v("3")'> 
+                <input type="button" class="buttonpink" value="+" onclick='v("+")'> 
+                <input type="button" class="buttonblack" value="0" onclick='v("0")'> 
+                <input type="button" class="buttonpink" value="." onclick='v(".")'> 
+                <input type="button" class="buttonpink" value="C" onclick='show("")'> 
+                <input type="button" class="buttonpink" value="=" onclick='calc()'> 
+            </p>
+        </div>
+    </div>
+</body>
+</html>

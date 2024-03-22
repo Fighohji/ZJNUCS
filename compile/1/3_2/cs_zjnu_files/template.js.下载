@@ -1,0 +1,127 @@
+/**
+ * Template.imgLb('templateImg',1366,450,450,160);
+ *
+ * Template.imgLb(选择器，图片宽度，图片高度，最大高度，最小高度)
+ *
+ */
+
+var Template;
+Template.imgLb('templateImg',1366,450,450,160);
+var w = $(window).width();
+
+$(window).resize(function() {
+  w = $(window).width();
+  // imgW();
+});
+{
+  //轮播图处理
+  var imgLb = function(
+    templateClassName,
+    initialW,
+    initialH,
+    maxHeight,
+    minHeight
+  ) {
+    $(window).resize(function() {
+      imgW();
+    });
+    imgW();
+
+    function imgW() {
+      var imgw = $("." + templateClassName + " .swiper-slide a img").width();
+
+      var sliderImgH = (w * initialH) / initialW; //滑块高度
+
+      // console.log('sliderImgH', sliderImgH);
+
+      if (w < initialW) {
+        $("." + templateClassName + " .swiper-slide a img").css(
+          "width",
+          "100%"
+        );
+        $(".swiper-container1").css("width", "100%");
+        if (sliderImgH > maxHeight) {
+          var marginH = 0 - sliderImgH / 2;
+          $("." + templateClassName).height(maxHeight);
+          $("." + templateClassName + " .swiper-slide").height(maxHeight);
+          $("." + templateClassName + " .swiper-slide a img")
+            .css("position", "absolute")
+            .css("left", "0")
+            .css("top", "50%")
+            .css("margin-top", marginH + "px")
+            .css("margin-left", "0");
+        } else if (sliderImgH > minHeight) {
+          $("." + templateClassName).css("height", "auto");
+          $("." + templateClassName + " .swiper-slide").css("height", "auto");
+          $("." + templateClassName + " .swiper-slide a img")
+            .css("height", "auto")
+            .css("width", "100%");
+          $("." + templateClassName + " .swiper-slide a img")
+            .css("position", "static")
+            .css("margin-left", "0")
+            .css("margin-top", "0");
+        } else {
+          $("." + templateClassName).height(minHeight);
+          $("." + templateClassName + " .swiper-slide").height(minHeight);
+          $("." + templateClassName + " .swiper-slide a img")
+            .height(minHeight)
+            .css("width", "auto");
+          var sliderImgW = $(
+            "." + templateClassName + " .swiper-slide a img"
+          ).width();
+          var marginW = 0 - sliderImgW / 2;
+          $("." + templateClassName + " .swiper-slide a img")
+            .css("position", "absolute")
+            .css("top", "0")
+            .css("left", "50%")
+            .css("margin-left", marginW + "px")
+            .css("margin-top", "0");
+        }
+      } else {
+        $("." + templateClassName + " .swiper-slide a img").css(
+          "width",
+          initialW + "px"
+        ); //（图片宽度<屏幕宽度）
+        $(".swiper-container1").width(initialW); //轮播容器宽度=图片宽度
+        if (initialH > maxHeight) {
+          //图片高度>最大高度
+          var marginH = 0 - initialH / 2;
+          var marginW = 0 - initialW / 2;
+          $("." + templateClassName).height(maxHeight);
+          $("." + templateClassName + " .swiper-slide").height(maxHeight);
+          $("." + templateClassName + " .swiper-slide a img")
+            .css("position", "absolute")
+            .css("left", "0%")
+            .css("margin-left", marginW + "px")
+            .css("top", "50%")
+            .css("margin-top", marginH + "px");
+        } else {
+          //图片高度<最大高度
+          $("." + templateClassName).css("height", "auto");
+          $("." + templateClassName + " .swiper-slide").css("height", "auto");
+          $("." + templateClassName + " .swiper-slide a img")
+            .css("position", "static")
+            .css("margin-top", "0")
+            .css("margin-left", "0")
+            .css("left", "auto")
+            .css("top", "auto");
+        }
+      }
+
+      var containH = $(".swiper-container1").width();
+
+      //    console.log($(' .swiper-slide').height());
+      $(".swiper-container1 .swiper-slide a").css("overflow", "hidden");
+      $(".swiper-container1 .swiper-slide a").width(containH); //滑块宽度=容器宽度
+    
+    }
+
+   
+    if ($(".pagination1").children().length < 2) {
+      $(".main .center .banner .pagination1").css("display", "none");
+    }
+  };
+  Template = {
+    imgLb: imgLb
+  };
+}

@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+body {
+    background-image: url(img/back.png);
+    background-size: cover;
+    width: 100%;
+    height: 700px;
+}
+
+.zongti {
+    text-align: center;
+}
+
+.ziti {
+    color: rgb(231, 18, 18);
+    font-size: 40px;
+}
+
+.lyb {
+    color: rgb(16, 72, 145);
+    font-size: 20px;
+
+}

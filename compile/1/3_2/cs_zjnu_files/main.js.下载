@@ -1,0 +1,25 @@
+$(function () {
+  // 通知公告切换
+  $(".notice .tablebar span").click(function () {
+    $(".notice .tablebar span").removeClass("selected")
+    $(this).addClass("selected")
+    var index = $(this).index()
+    $(".notice_list").removeClass("actived")
+    $(".notice_list").eq(index).addClass("actived")
+  })
+  $(".academic .tablebar span").click(function () {
+    $(".academic .tablebar span").removeClass("selected")
+    $(this).addClass("selected")
+    var index = $(this).index()
+    $(".swiper-container").removeClass("actived")
+    $(".swiper-container").eq(index + 1).addClass("actived")
+  })
+})
+
+//阻止事件冒泡
+function stopBubble(e) {
+  if (e && e.stopPropagation)
+    e.stopPropagation();
+  else
+    window.event.cancelBubble = true;
+}

@@ -1,0 +1,3 @@
+运行regex_example.py程序，结果是乱码
+解决办法：
+另存list.html文件，编码格式选UTF-8

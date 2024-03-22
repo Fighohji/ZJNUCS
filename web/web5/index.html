@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+        function stoptime() {
+            clearTimeout(t);
+        }
+        function showtime() {
+            now = new Date();
+            h = now.getHours();
+            m = now.getMinutes();
+            s = now.getSeconds();
+            var obj = document.getElementById('txt');
+            obj.value = h + ":" + m + ":" + s;
+            t = setTimeout("showtime()", 10);
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <div class="zongti">
+        <div class="ziti">
+            留言板
+        </div>
+        <div>
+            <textarea name="" id="msg" cols="70" rows="15">
+            </textarea>
+        </div>
+        <div>
+            <input type="button" id="btn" value="提交">
+        </div>
+        <div>
+            <input type="button" id="btn1" value="时间显示" onclick="showtime()">
+
+            <input type="button" id="btn2" value="停止" onclick="stoptime()">
+
+            <input type="text" id="txt">
+        </div>
+        <div id="box" class="lyb">
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var ul = document.createElement("ul");
+        box.appendChild(ul);
+        var btn = document.getElementById("btn");
+        var msg = document.getElementById("msg");
+        msg.value = "";
+        var n = 0;
+        btn.onclick = function () {
+            if (msg.value === "") {
+                alert("请输入内容")
+            } else {
+                n++;
+                var li = document.createElement("li");
+                li.innerHTML = n + "L: " + msg.value + "&nbsp;&nbsp;" + "<span>×</span>";
+                var lis = document.getElementsByTagName("li");
+                if (n === 1) {
+                    ul.appendChild(li);
+                    // 如果是第一条留言则用appendChild
+                } else {
+                    ul.insertBefore(li, lis[0]);
+                    // 最新的留言总在第一条显示
+                }
+                //msg.value=msg.value+msg.value;
+                msg.value = "";
+                // 重置文本框
+                var span = document.getElementsByTagName("span");
+                for (var i = 0; i < span.length; i++) {
+                    span[i].onclick = function () {
+                        ul.removeChild(this.parentNode);
+                        n--;
+                    }
+                }
+            }
+        };
+    </script>
+
+
+</body>
+
+</html>
